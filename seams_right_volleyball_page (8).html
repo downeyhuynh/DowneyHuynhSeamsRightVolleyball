@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seams Right Volleyball | Private Volleyball Training</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --text: #ffffff;
+      --muted: #bfbfbf;
+      --line: #2a2a2a;
+      --accent: #ffffff;
+      --accent-2: #e5e5e5;
+      --soft: #1a1a1a;
+      --max: 1100px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      background: #000000;
+      color: white;
+      padding: 22px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .brand-text p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 70px 0 50px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--accent-2);
+    }
+
+    .hero-copy .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 700px;
+    }
+
+    .hero-copy .summary {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--accent-2);
+      margin-bottom: 6px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      background: #dfe7ef;
+    }
+
+    .hero-card .caption {
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 32px 0;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .about {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 2;
+    }
+
+    .about img {
+      width: 320px;
+      height: auto;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .about p + p {
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .about {
+        flex-direction: column;
+      }
+
+      .about img {
+        width: 100%;
+      }
+    }
+
+    .experience-grid,
+    .services-grid,
+    .gallery-grid,
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .experience-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .experience-item h3,
+    .service-item h3,
+    .contact-item h3 {
+      font-size: 1.15rem;
+      color: var(--accent-2);
+      margin-bottom: 8px;
+    }
+
+    .experience-item p,
+    .service-item p,
+    .contact-item p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline li {
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+      border-radius: 12px;
+    }
+
+    .timeline strong {
+      display: block;
+      color: var(--accent-2);
+      margin-bottom: 4px;
+    }
+
+    .price-box {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--accent-2);
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 16px 24px;
+      border-radius: 16px;
+    }
+
+    .gallery-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #dfe7ef;
+    }
+
+    .gallery-item p {
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .parks-scroll {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 380px);
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .parks-scroll::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .parks-scroll::-webkit-scrollbar-thumb {
+      background: #2d2d2d;
+      border-radius: 999px;
+    }
+
+    .park-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      scroll-snap-align: start;
+    }
+
+    .park-card h4 {
+      font-size: 1.05rem;
+      color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+
+    .park-card iframe {
+      width: 100%;
+      height: 220px;
+      border: 0;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .park-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .park-card a {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .experience-grid,
+      .services-grid,
+      .gallery-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img {
+        height: 320px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-top: 50px;
+      }
+
+      .brand-text h1 {
+        font-size: 1rem;
+      }
+
+      nav ul {
+        font-size: 0.9rem;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">
+          <!-- Replace https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500 with your actual logo file -->
+          <img src="https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500" alt="Seams Right Volleyball logo" />
+        </div>
+        <div class="brand-text">
+          <h1>Seams Right Volleyball</h1>
+          <p>Private Volleyball Training</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#parks">Parks</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h2>Private and Small Group Volleyball Training</h2>
+          <p class="subtitle">Fundamental skill development, real playing experience, and coaching built from youth to college-level volleyball.</p>
+          
+
+          <div class="hero-highlights">
+            <div class="stat">
+              <strong>Player</strong>
+              <span>Former Collegiate Player — NAIA Level</span>
+            </div>
+            <div class="stat">
+              <strong>Coach</strong>
+              <span>Former Collegiate Head Coach</span>
+            </div>
+            <div class="stat">
+              <strong>Training</strong>
+              <span>Private lessons and small group sessions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <!-- Replace https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000 with your main coaching or playing photo -->
+          <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000" alt="Volleyball coaching photo" />
+          <div class="caption">Add your main coaching or playing photo here.</div>
+        </div>
+      </div>
+
+        <div id="parks" class="card" style="margin-top:20px;">
+          <h3>Parks</h3>
+          
+
+          <div class="parks-scroll">
+            <div class="park-card">
+              <h4>Friendship (Smith-Murphy) Park</h4>
+              <iframe src="https://www.google.com/maps?q=5290%20Cameron%20Dr%2C%20Buena%20Park%2C%20CA%2090621&output=embed" loading="lazy"></iframe>
+              <p><strong>Address:</strong> 5290 Cameron Dr, Buena Park, CA 90621</p>
+              <p><strong>Schedule:</strong><br><strong>Friday</strong> 4:30 PM – 6:30 PM</p>
+            </div>
+
+            <div class="park-card">
+              <h4>McDowell Park</h4>
+              <iframe src="https://www.google.com/maps?q=17200%20Oak%20St%2C%20Fountain%20Valley%2C%20CA%2092708&output=embed" loading="lazy"></iframe>
+              <p><strong>Address:</strong> 17200 Oak St, Fountain Valley, CA 92708</p>
+              <p><strong>Schedule:</strong><br><strong>Wed–Thu</strong> 4:30 PM – 6:30 PM<br><strong>Sunday</strong> 9:00 AM – 1:00 PM</p>
+            </div>
+
+            <div class="park-card">
+              <h4>Rossmoor Park</h4>
+              <iframe src="https://www.google.com/maps?q=3232%20Hedwig%20Rd%2C%20Rossmoor%2C%20CA%2090720&output=embed" loading="lazy"></iframe>
+              <p><strong>Address:</strong> 3232 Hedwig Rd, Rossmoor, CA 90720</p>
+              <p><strong>Schedule:</strong><br><strong>Monday & Tuesday</strong> 4:30 PM – 6:30 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        
+        <div class="card about">
+          <div class="about-text">
+            <p>
+              My name is Downey Huynh, and volleyball has been a major part of my life as both a player and a coach. I graduated from Fountain Valley High School in 2017, continued my playing career at Orange Coast College from 2017 to 2019, and later played at the University of Jamestown from 2020 to 2023.
+            </p>
+            <p>
+              Along the way, I built experience coaching across multiple levels of the game. I have worked with youth athletes, high school teams, club programs, and college players in both assistant and head coaching roles. My coaching background includes Fountain Valley High School, Edison High School, Balboa Bay Volleyball Club, and the University of Jamestown.
+            </p>
+            <p>
+              Through Seams Right Volleyball, I want to help athletes develop strong fundamentals, better confidence, and a deeper understanding of the game. My coaching style is clear, encouraging, and detail-oriented, with an emphasis on teaching skills that translate directly to real match play.
+            </p>
+          </div>
+          <img src="https://drive.google.com/thumbnail?id=1VkJS3UHfawPGrSjX9qZgYw1RO7ALpG9g&sz=w1000" alt="About me photo">
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        
+
+        <div class="experience-grid">
+          <div class="card experience-item">
+            <h3>Playing Experience</h3>
+            <ul class="timeline">
+              <li>
+                <strong>Fountain Valley High School</strong>
+                Graduated in 2017
+              </li>
+              <li>
+                <strong>Orange Coast College</strong>
+                Played from 2017–2019
+              </li>
+              <li>
+                <strong>University of Jamestown</strong>
+                Played from 2020–2023
+              </li>
+            </ul>
+            <img src="https://drive.google.com/thumbnail?id=14ev0G6QYd9TKx_VMLfUpAhH_IXjkXjRF&sz=w1000" alt="Playing experience photo" style="margin-top:20px; border-radius:12px;">
+            <img src="https://drive.google.com/thumbnail?id=1-0cQZT5atLTSp8SBTMJAa2hpkrXbyTkv&sz=w1000" alt="Playing experience photo 2" style="margin-top:12px; border-radius:12px;">
+          </div>
+
+          <div class="card experience-item">
+            <h3>Coaching Experience</h3>
+            <ul class="timeline">
+              <li>
+                <strong>Fountain Valley High School</strong>
+                Frosh coach — 2018
+              </li>
+              <li>
+                <strong>Edison High School</strong>
+                JV coach — 2020
+              </li>
+              <li>
+                <strong>Balboa Bay Volleyball Club</strong>
+                Club coaching — 2017–2021
+              </li>
+              <li>
+                <strong>University of Jamestown</strong>
+                College coaching — 2023–2025
+              </li>
+            </ul>
+            <img src="https://drive.google.com/thumbnail?id=1oNxC-9F9nOt7nGp4XLRwfcmNISsgwXz1&sz=w1000" alt="Coaching experience photo" style="margin-top:20px; border-radius:12px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        
+
+        <div class="services-grid">
+          <div class="card service-item">
+            <h3>Private Lessons</h3>
+            <p>
+              One-on-one training focused on the athlete’s individual needs. Sessions can cover passing, serving, hitting, defense, movement, and overall game understanding.
+            </p>
+            <img src="https://drive.google.com/thumbnail?id=1y4UaxDyu7Yc7dZvL5Ki-1NMVGnxuto34&sz=w1000" alt="Private lesson photo" style="margin-top:20px; border-radius:12px;">
+          </div>
+
+          <div class="card service-item">
+            <h3>Small Group Training</h3>
+            <p>
+              Small group sessions that create a competitive and energetic environment while still allowing for detailed instruction and skill-specific feedback. Groups are formed based on age, skill level, position, and training focus, and typically require agreement from all participants.
+            </p>
+            <img src="https://drive.google.com/thumbnail?id=1n890uW4aDpdXZ2TP5SMmGdNRLvzZc4QV&sz=w1000" alt="Small group training photo" style="margin-top:20px; border-radius:12px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <h2 class="section-title">Pricing</h2>
+        
+        <div class="card">
+          <h3>Training Rate</h3>
+          <div class="price-box">$60 / hour</div>
+          <p style="margin-top: 16px; color: var(--muted);">
+            Available for private lessons and small group training. Small group sessions are formed based on age, skill level, position, and practice focus, and typically require agreement from all participants.
+          </p>
+          <div style="margin-top:20px;">
+            <a href="#" style="display:inline-block; padding:14px 24px; background:#ffffff; color:#000000; border-radius:12px; font-weight:bold; text-align:center;">
+              Waiver Form
+            </a>
+          </div>
+        </div>
+          <p style="margin-top: 16px; color: var(--muted);">
+            Available for private lessons and small group training. Small group sessions are formed based on age, skill level, position, and practice focus, and typically require agreement from all participants.
+          </p>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://drive.google.com/thumbnail?id=1vr5Ie5c5qRuVOIqoZo7XWvNkLZO1LII0&sz=w1000" alt="Gallery photo 1" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://drive.google.com/thumbnail?id=1cr1Q_QmF25Hvkhrnb34Au3e21xf0La5H&sz=w1000" alt="Gallery photo 2" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://drive.google.com/thumbnail?id=1yx7aXrMQxEAOBqTDy4_-sQ411RqjuL1G&sz=w1000" alt="Gallery photo 3" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://drive.google.com/thumbnail?id=1q2ihxaf5CtDSFPrAN_IjsKAlX-1gpnMM&sz=w1000" alt="Gallery photo 4" />
+          </div>
+          <div class="gallery-item">
+            <img src="https://drive.google.com/thumbnail?id=1kYtJw7q2sDEnl_ZgiSPKNVvHkLHFaTo1&sz=w1000" alt="Gallery photo 5" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        
+
+        <div class="contact-grid">
+          <div class="card contact-item">
+            <h3>Phone</h3>
+            <p><a href="tel:7144748592">714-474-8592</a></p>
+          </div>
+
+          <div class="card contact-item">
+            <h3>Email</h3>
+            <p><a href="mailto:downeyhuynh1@gmail.com">downeyhuynh1@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Seams Right Volleyball. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
