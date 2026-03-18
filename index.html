@@ -111,12 +111,29 @@
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
+      align-items: center;
     }
 
     nav a {
       color: #ffffff;
       font-weight: 600;
       font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .book-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #ffffff;
+      color: #000000;
+      border: 2px solid #ffffff;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .book-btn:hover {
+      background: #000000;
+      color: #ffffff;
     }
 
     .hero {
@@ -186,12 +203,6 @@
       height: 420px;
       object-fit: cover;
       background: #dfe7ef;
-    }
-
-    .hero-card .caption {
-      padding: 16px 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
     }
 
     section {
@@ -448,7 +459,6 @@
     <div class="container nav">
       <div class="brand">
         <div class="logo">
-          <!-- Replace https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500 with your actual logo file -->
           <img src="https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500" alt="Seams Right Volleyball logo" />
         </div>
         <div class="brand-text">
@@ -466,8 +476,8 @@
           <li><a href="#parks">Parks</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
-            <a href="https://calendar.app.google/PWv9sq8UM7JigWbJA" target="_blank" rel="noopener noreferrer" style="padding:10px 16px; background:#ffffff; color:#000000; border-radius:10px; font-weight:bold;">
-              Book
+            <a href="https://calendar.app.google/PWv9sq8UM7JigWbJA" target="_blank" rel="noopener noreferrer" class="book-btn">
+              Book Session
             </a>
           </li>
         </ul>
@@ -481,7 +491,7 @@
         <div class="hero-copy">
           <h2>Downey Huynh Volleyball Coaching</h2>
           <p class="subtitle">Fundamental skill development, real playing experience, and coaching built from youth to college-level volleyball.</p>
-          
+          <p class="summary">Based in Orange County — training athletes of all levels to improve fundamentals, confidence, and real game performance.</p>
 
           <div class="hero-highlights">
             <div class="stat">
@@ -500,38 +510,35 @@
         </div>
 
         <div class="hero-card">
-          <!-- Replace https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000 with your main coaching or playing photo -->
           <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000" alt="Volleyball coaching photo" />
-          <div class="caption">Add your main coaching or playing photo here.</div>
         </div>
       </div>
 
+      <div class="container">
         <div id="parks" class="card" style="margin-top:20px;">
           <h3>Parks</h3>
-          
 
           <div class="parks-scroll">
             <div class="park-card">
               <h4>Friendship (Smith-Murphy) Park</h4>
               <iframe src="https://www.google.com/maps?q=5290%20Cameron%20Dr%2C%20Buena%20Park%2C%20CA%2090621&output=embed" loading="lazy"></iframe>
               <p><strong>Address:</strong> 5290 Cameron Dr, Buena Park, CA 90621</p>
-              <p><strong>Schedule:</strong><br><strong>Friday</strong> 4:30 PM – 6:30 PM</p>
+              <p><strong>Schedule:</strong><br><strong>Fri</strong> | 4:30–6:30 PM</p>
             </div>
 
             <div class="park-card">
               <h4>McDowell Park</h4>
               <iframe src="https://www.google.com/maps?q=17200%20Oak%20St%2C%20Fountain%20Valley%2C%20CA%2092708&output=embed" loading="lazy"></iframe>
               <p><strong>Address:</strong> 17200 Oak St, Fountain Valley, CA 92708</p>
-              <p><strong>Schedule:</strong><br><strong>Wed–Thu</strong> 4:30 PM – 6:30 PM<br><strong>Sunday</strong> 9:00 AM – 1:00 PM</p>
+              <p><strong>Schedule:</strong><br><strong>Wed–Thu</strong> | 4:30–6:30 PM<br><strong>Sun</strong> | 9 AM–1 PM</p>
             </div>
 
             <div class="park-card">
               <h4>Rossmoor Park</h4>
               <iframe src="https://www.google.com/maps?q=3232%20Hedwig%20Rd%2C%20Rossmoor%2C%20CA%2090720&output=embed" loading="lazy"></iframe>
               <p><strong>Address:</strong> 3232 Hedwig Rd, Rossmoor, CA 90720</p>
-              <p><strong>Schedule:</strong><br><strong>Monday & Tuesday</strong> 4:30 PM – 6:30 PM</p>
+              <p><strong>Schedule:</strong><br><strong>Mon–Tue</strong> | 4:30–6:30 PM</p>
             </div>
-          </div>
           </div>
         </div>
       </div>
@@ -540,7 +547,7 @@
     <section id="about">
       <div class="container">
         <h2 class="section-title">About Me</h2>
-        
+
         <div class="card about">
           <div class="about-text">
             <p>
@@ -561,7 +568,6 @@
     <section id="experience">
       <div class="container">
         <h2 class="section-title">Experience</h2>
-        
 
         <div class="experience-grid">
           <div class="card experience-item">
@@ -613,7 +619,6 @@
     <section id="services">
       <div class="container">
         <h2 class="section-title">Services</h2>
-        
 
         <div class="services-grid">
           <div class="card service-item">
@@ -638,10 +643,13 @@
     <section id="pricing">
       <div class="container">
         <h2 class="section-title">Pricing</h2>
-        
+
         <div class="card">
           <h3>Training Rate</h3>
           <div class="price-box">$60 / hour</div>
+          <p style="margin-top: 10px; color: var(--accent-2); font-weight: bold;">
+            Limited weekly spots available
+          </p>
           <p style="margin-top: 16px; color: var(--muted);">
             Available for private lessons and small group training. Small group sessions are formed based on age, skill level, position, and practice focus, and typically require agreement from all participants.
           </p>
@@ -651,18 +659,12 @@
             </a>
           </div>
         </div>
-          <p style="margin-top: 16px; color: var(--muted);">
-            Available for private lessons and small group training. Small group sessions are formed based on age, skill level, position, and practice focus, and typically require agreement from all participants.
-          </p>
-          
-        </div>
       </div>
     </section>
 
     <section id="gallery">
       <div class="container">
         <h2 class="section-title">Gallery</h2>
-        
 
         <div class="gallery-grid">
           <div class="gallery-item">
@@ -687,7 +689,6 @@
     <section id="contact">
       <div class="container">
         <h2 class="section-title">Contact</h2>
-        
 
         <div class="contact-grid">
           <div class="card contact-item">
@@ -707,6 +708,7 @@
   <footer>
     <div class="container">
       <p>© 2026 Downey Huynh | Seams Right Volleyball. All rights reserved.</p>
+      <p>Orange County Volleyball Training</p>
     </div>
   </footer>
 </body>
