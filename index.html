@@ -3,819 +3,713 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IKEA Scavenger Hunt</title>
+  <meta name="description" content="Downey Huynh is a private volleyball coach in Orange County offering lessons, small group training, and skill development for all levels.">
+  <title>Downey Huynh | Volleyball Coach in Orange County</title>
   <style>
-    * { box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --text: #ffffff;
+      --muted: #bfbfbf;
+      --line: #2a2a2a;
+      --accent: #ffffff;
+      --accent-2: #e5e5e5;
+      --soft: #1a1a1a;
+      --max: 1100px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f5f7fb, #e8eefc);
-      color: #1f2937;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    .app {
-      width: 100%;
-      max-width: 980px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.12);
-      overflow: hidden;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .header {
-      background: linear-gradient(135deg, #0058a3, #ffda1a);
-      padding: 28px 24px;
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      background: #000000;
       color: white;
+      padding: 22px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.8);
     }
 
-    .header h1 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-      letter-spacing: 0.5px;
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .header p {
-      margin: 0;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
+    .brand-text p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .book-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #ffffff;
+      color: #000000;
+      border: 2px solid #ffffff;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .book-btn:hover {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .hero {
+      padding: 70px 0 50px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--accent-2);
+    }
+
+    .hero-copy .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 18px;
       max-width: 700px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.95);
     }
 
-    .content {
-      padding: 24px;
+    .hero-copy .summary {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--accent-2);
+      margin-bottom: 6px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      background: #dfe7ef;
+    }
+
+    section {
+      scroll-margin-top: 100px;
+      padding: 32px 0;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .about {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 2;
+    }
+
+    .about img {
+      width: 320px;
+      height: auto;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .about p + p {
+      margin-top: 14px;
+    }
+
+    .experience-grid,
+    .services-grid,
+    .contact-grid {
       display: grid;
       gap: 20px;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 12px;
+    .experience-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .stat-card {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .experience-item h3,
+    .service-item h3,
+    .contact-item h3 {
+      font-size: 1.15rem;
+      color: var(--accent-2);
+      margin-bottom: 8px;
+    }
+
+    .experience-item p,
+    .service-item p,
+    .contact-item p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline li {
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--soft);
+      border-radius: 12px;
+    }
+
+    .timeline strong {
+      display: block;
+      color: var(--accent-2);
+      margin-bottom: 4px;
+    }
+
+    .swipe-gallery {
+      scroll-behavior: smooth;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 320px);
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-top: 20px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .swipe-gallery::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .swipe-gallery::-webkit-scrollbar-thumb {
+      background: #2d2d2d;
+      border-radius: 999px;
+    }
+
+    .swipe-gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 12px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      background: #dfe7ef;
+    }
+
+    .price-box {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--accent-2);
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 16px 24px;
+      border-radius: 16px;
+    }
+
+    .gallery-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-width: 260px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: #dfe7ef;
+      border-radius: 0;
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .parks-scroll {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 380px);
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .parks-scroll::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .parks-scroll::-webkit-scrollbar-thumb {
+      background: #2d2d2d;
+      border-radius: 999px;
+    }
+
+    .park-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
       border-radius: 16px;
       padding: 16px;
-      text-align: center;
+      scroll-snap-align: start;
     }
 
-    .stat-card h2 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: #0058a3;
-    }
-
-    .stat-card p {
-      margin: 8px 0 0;
-      font-size: 0.95rem;
-      color: #4b5563;
-    }
-
-    .riddle-box {
-      background: #ffffff;
-      border: 2px solid #dbeafe;
-      border-radius: 18px;
-      padding: 24px;
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .badge {
-      display: inline-block;
-      width: fit-content;
-      background: #eff6ff;
-      color: #1d4ed8;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-    }
-
-    .riddle-text {
-      font-size: 1.5rem;
-      line-height: 1.45;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    .subtext {
-      margin-top: 14px;
-      color: #6b7280;
-      font-size: 0.98rem;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    button {
-      border: none;
-      border-radius: 14px;
-      padding: 14px 18px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .complete-btn { background: #10b981; color: white; }
-    .skip-btn { background: #f59e0b; color: white; }
-    .reset-btn { background: #ef4444; color: white; }
-    .photo-btn { background: #2563eb; color: white; }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .history-section {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .panel {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .panel h3 {
-      margin: 0 0 12px;
+    .park-card h4 {
       font-size: 1.05rem;
+      color: var(--accent-2);
+      margin-bottom: 10px;
     }
 
-    #completedList {
-      margin: 0;
-      padding-left: 20px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .submission-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 12px;
-    }
-
-    .submission-card {
-      background: white;
-      border: 1px solid #dbe3ef;
-      border-radius: 14px;
-      padding: 8px;
-    }
-
-    .submission-card img {
+    .park-card iframe {
       width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-      cursor: pointer;
-    }
-
-    .submission-caption {
-      font-size: 0.78rem;
-      line-height: 1.3;
-      color: #475569;
-      margin-top: 8px;
-      max-height: 3.2em;
-      overflow: hidden;
-    }
-
-    .hidden-input {
-      display: none;
-    }
-
-    .photo-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.82);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 2000;
-    }
-
-    .photo-overlay.active {
-      display: flex;
-    }
-
-    .photo-overlay-content {
-      background: white;
-      border-radius: 18px;
-      padding: 16px;
-      max-width: 90vw;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .photo-overlay-content img {
-      max-width: 100%;
-      max-height: 72vh;
+      height: 220px;
+      border: 0;
       border-radius: 12px;
-      object-fit: contain;
+      margin-bottom: 12px;
     }
 
-    .overlay-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      font-weight: bold;
+    .park-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
     }
 
-    @media (max-width: 860px) {
-      .stats {
-        grid-template-columns: repeat(3, 1fr);
+    .park-card a {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .about {
+        flex-direction: column;
       }
 
-      .history-section {
+      .about img {
+        width: 100%;
+      }
+
+      .hero-grid,
+      .experience-grid,
+      .services-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img {
+        height: 320px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        gap: 14px;
       }
     }
 
     @media (max-width: 560px) {
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
+      .hero {
+        padding-top: 50px;
       }
 
-      .riddle-text {
-        font-size: 1.22rem;
+      .brand-text h1 {
+        font-size: 1rem;
       }
 
-      .content {
-        padding: 16px;
+      nav ul {
+        font-size: 0.9rem;
+      }
+
+      .card {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div id="startScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0058a3,#ffda1a);display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;z-index:999;">
-    <h1 style="font-size:2.5rem;margin-bottom:20px;">IKEA Scavenger Hunt</h1>
-    <button id="startGameBtn" style="padding:16px 28px;font-size:1.2rem;border:none;border-radius:12px;cursor:pointer;font-weight:bold;">Start Game</button>
-  </div>
-  <div class="app">
-    <div class="header">
-      <h1>IKEA Scavenger Hunt</h1>
-      <p>Complete challenges or skip — but you only get 3 skips!</p>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">
+          <img src="https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500" alt="Seams Right Volleyball logo" />
+        </div>
+        <div class="brand-text">
+          <h1>Seams Right Volleyball</h1>
+          <p>Private Volleyball Training</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#services">Services & Pricing</a></li>
+          <li><a href="#parks">Parks</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="https://calendar.app.google/PWv9sq8UM7JigWbJA" target="_blank" rel="noopener noreferrer" class="book-btn">
+              Book Session
+            </a>
+            <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="book-btn">
+              Waiver Form
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="content">
-      <div class="stats">
-        <div class="stat-card"><h2 id="completedCount">0</h2><p>Completed</p></div>
-        <div class="stat-card"><h2 id="skippedCount">0</h2><p>Used Skips</p></div>
-        <div class="stat-card"><h2 id="remainingSkips">3</h2><p>Skips Left</p></div>
-        <div class="stat-card"><h2 id="caughtCount">0</h2><p>Caught</p></div>
-        <div class="stat-card"><h2 id="remainingCount">50</h2><p>Remaining</p></div>
-        <div class="stat-card"><h2 id="seenCount">0</h2><p>Seen</p></div>
-      </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h2>Downey Huynh Volleyball Coaching</h2>
+          <p class="subtitle">Fundamental skill development, real playing experience, and coaching built from youth to college-level volleyball.</p>
+          <p class="summary">Based in Orange County — training athletes of all levels to improve fundamentals, confidence, and real game performance.</p>
 
-      <div class="riddle-box">
-        <div class="badge" id="challengeNumber">Challenge Ready</div>
-        <p class="riddle-text" id="riddleText">Press start to begin.</p>
-        <div class="subtext" id="statusText">Take a photo to prove it.</div>
-      </div>
-
-      <div class="buttons">
-        <button class="complete-btn" id="startOrCompleteBtn">Start / Complete</button>
-        <button class="skip-btn" id="skipBtn">Skip</button>
-        <button class="photo-btn" id="addPhotoBtn">Take / Choose Photo</button>
-        <button class="reset-btn" id="caughtBtn">Caught</button>
-        <button class="reset-btn" id="resetBtn">Reset</button>
-      </div>
-
-      <input class="hidden-input" type="file" id="photoInput" accept="image/*" capture="environment" />
-
-      <div class="history-section">
-        <div class="panel">
-          <h3>Completed Challenges</h3>
-          <ol id="completedList"></ol>
+          <div class="hero-highlights">
+            <div class="stat">
+              <strong>Player</strong>
+              <span>Former Collegiate Player — NAIA Level</span>
+            </div>
+            <div class="stat">
+              <strong>Coach</strong>
+              <span>Former Collegiate Head Coach</span>
+            </div>
+            <div class="stat">
+              <strong>Training</strong>
+              <span>Private lessons and small group sessions</span>
+            </div>
+          </div>
         </div>
-        <div class="panel">
-          <h3>Photo Submissions</h3>
-          <div id="submissionGrid" class="submission-grid"></div>
+
+        <div class="hero-card">
+          <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000" alt="Volleyball coaching photo" />
         </div>
       </div>
-    </div>
-  </div>
 
-  <script>
-    const STORAGE_KEY = 'ikeaScavengerHuntState_v2';
-    const ACCESS_KEY = 'ikeaScavengerHuntAccess_v1';
+      <div class="container">
+        <div id="parks" class="card" style="margin-top:20px;">
+          <h3>Parks</h3>
 
-    const riddles = [
-      "Take a photo of your group pretending to have a very serious business meeting on a couch.",
-      "Take a photo of everyone acting like mannequins in a display room.",
-      "Take a photo of your group fake-sleeping dramatically in a bed display.",
-      "Take a photo of one person being ‘the chef’ and others reacting like a cooking show audience.",
-      "Take a photo of your group arguing over a couch like it’s the last one on Earth.",
-      "Take a photo of someone proposing to a piece of furniture.",
-      "Take a photo of your group acting like a happy family in a living room.",
-      "Take a photo of everyone hiding behind furniture like spies.",
-      "Take a photo of your group doing a fashion runway walk in a display area.",
-      "Take a photo of your group pretending the floor is lava.",
-      "Take a photo of someone lifting a tiny item like it’s extremely heavy.",
-      "Take a photo of your group reacting like they just saw a ghost in a bedroom.",
-      "Take a photo of your group doing a synchronized pose on chairs.",
-      "Take a photo of someone being tucked into bed by the group.",
-      "Take a photo of your group pretending to watch TV very intensely.",
-      "Take a photo of your group acting like they’re in a horror movie scene.",
-      "Take a photo of everyone pointing at one person like they’re the main character.",
-      "Take a photo of your group pretending to have a pillow fight.",
-      "Take a photo of your group acting like they’re late for something important.",
-      "Take a photo of your group posing like a band album cover.",
-      "Take a photo of someone sitting like royalty on a chair with others bowing.",
-      "Take a photo of your group acting like they just got bad news.",
-      "Take a photo of your group pretending to be influencers reviewing furniture.",
-      "Take a photo of your group doing their best superhero poses.",
-      "Take a photo of your group acting like they’re lost in IKEA.",
-      "Take a photo of someone dramatically fainting into furniture.",
-      "Take a photo of your group acting like a family dinner gone wrong.",
-      "Take a photo of your group pretending to be detectives investigating a room.",
-      "Take a photo of your group copying the exact pose of mannequins.",
-      "Take a photo of your group acting like they’re in a commercial.",
-      "Take a photo of your group pretending to fight over the remote.",
-      "Take a photo of your group acting like they’re freezing cold in a bedroom.",
-      "Take a photo of your group pretending to sneak food.",
-      "Take a photo of your group acting like they’re exhausted after a long day.",
-      "Take a photo of your group posing like a movie poster.",
-      "Take a photo of your group pretending to move furniture dramatically.",
-      "Take a photo of your group acting like they’re in a romantic scene.",
-      "Take a photo of your group reacting like they found something shocking.",
-      "Take a photo of your group pretending to be on a game show.",
-      "Take a photo of your group acting like they’re gossiping.",
-      "Take a photo of your group pretending to be robots.",
-      "Take a photo of your group acting like they’re late for class.",
-      "Take a photo of your group doing a freeze-frame mid-action.",
-      "Take a photo of your group pretending to be statues.",
-      "Take a photo of your group acting like they’re celebrating something big.",
-      "Take a photo of your group pretending to be in a dramatic breakup scene.",
-      "Take a photo of your group acting like they’re on vacation in IKEA.",
-      "Take a photo of your group pretending to be furniture salespeople.",
-      "Take a photo of your group doing their funniest face all at once.",
-      "Take a photo of your group acting like they’re the main characters in a sitcom."
-    ];
+          <div class="parks-scroll">
+            <div class="park-card">
+              <h4>Friendship (Smith-Murphy) Park</h4>
+              <iframe src="https://www.google.com/maps?q=5290%20Cameron%20Dr%2C%20Buena%20Park%2C%20CA%2090621&output=embed" loading="lazy"></iframe>
+              <p><strong>Address:</strong> 5290 Cameron Dr, Buena Park, CA 90621</p>
+              <p><strong>Schedule:</strong><br><strong>Fri</strong> | 4:30–6:30 PM</p>
+            </div>
 
-    let availableRiddles = [...riddles];
-    let currentRiddle = null;
-    let completedCount = 0;
-    let skippedCount = 0;
-    let caughtCount = 0;
-    let maxSkips = 3;
-    let seenCount = 0;
-    let timeoutEnd = null;
-    let timeoutInterval = null;
-    let completedItems = [];
-    let photoSubmissions = [];
-    let pendingPhotoData = null;
+            <div class="park-card">
+              <h4>McDowell Park</h4>
+              <iframe src="https://www.google.com/maps?q=17200%20Oak%20St%2C%20Fountain%20Valley%2C%20CA%2092708&output=embed" loading="lazy"></iframe>
+              <p><strong>Address:</strong> 17200 Oak St, Fountain Valley, CA 92708</p>
+              <p><strong>Schedule:</strong><br><strong>Wed–Thu</strong> | 4:30–6:30 PM<br><strong>Sun</strong> | 9 AM–1 PM</p>
+            </div>
 
-    const skipBtn = document.getElementById('skipBtn');
-    const startOrCompleteBtn = document.getElementById('startOrCompleteBtn');
-    const addPhotoBtn = document.getElementById('addPhotoBtn');
-    const photoInput = document.getElementById('photoInput');
-    const statusText = document.getElementById('statusText');
-    const challengeNumber = document.getElementById('challengeNumber');
-    const riddleText = document.getElementById('riddleText');
-    const completedList = document.getElementById('completedList');
-    const submissionGrid = document.getElementById('submissionGrid');
-    const startScreen = document.getElementById('startScreen');
-    const startGameBtn = document.getElementById('startGameBtn');
-
-    const photoOverlay = document.createElement('div');
-    photoOverlay.className = 'photo-overlay';
-    photoOverlay.innerHTML = `
-      <div class="photo-overlay-content">
-        <div class="overlay-top">
-          <span id="overlayCaption">Photo Preview</span>
-          <button id="closeOverlayBtn" class="reset-btn">Close</button>
+            <div class="park-card">
+              <h4>Rossmoor Park</h4>
+              <iframe src="https://www.google.com/maps?q=3232%20Hedwig%20Rd%2C%20Rossmoor%2C%20CA%2090720&output=embed" loading="lazy"></iframe>
+              <p><strong>Address:</strong> 3232 Hedwig Rd, Rossmoor, CA 90720</p>
+              <p><strong>Schedule:</strong><br><strong>Mon–Tue</strong> | 4:30–6:30 PM</p>
+            </div>
+          </div>
         </div>
-        <img id="overlayImage" alt="Submission preview" />
+        
+        </div>
       </div>
-    `;
-    document.body.appendChild(photoOverlay);
+    </section>
 
-    const overlayImage = document.getElementById('overlayImage');
-    const overlayCaption = document.getElementById('overlayCaption');
-    const closeOverlayBtn = document.getElementById('closeOverlayBtn');
+<script>
+function scrollLeftFunc() {
+  document.getElementById('servicesSlider').scrollBy({ left: -300, behavior: 'smooth' });
+}
+function scrollRightFunc() {
+  document.getElementById('servicesSlider').scrollBy({ left: 300, behavior: 'smooth' });
+}
+</script>
 
-    function saveAccessGranted() {
-      localStorage.setItem(ACCESS_KEY, 'true');
-    }
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
 
-    function hasSavedAccess() {
-      return localStorage.getItem(ACCESS_KEY) === 'true';
-    }
+        <div class="card about">
+          <div class="about-text">
+            <p>
+              I started volleyball late as a freshman in high school and didn’t have much guidance on how to navigate the sport—what clubs to join, how to train, or how to pursue playing at the next level. I didn’t play a single minute my freshman year, which forced me to work, train, and earn every opportunity that came after.
+            </p>
+            <p>
+              Through consistent effort and learning along the way, I was able to build a respectable playing career at Orange Coast College and later at the University of Jamestown. That journey—from not playing to competing at the collegiate level—shapes how I coach today.
+            </p>
+            <p>
+              My goal is to provide an affordable and clear path for athletes and parents who may feel confused about the volleyball journey. I focus on helping players build strong fundamentals, confidence, and real game skills while giving them the guidance I wish I had when I started.
+            </p>
+          </div>
+          <img src="https://drive.google.com/thumbnail?id=1VkJS3UHfawPGrSjX9qZgYw1RO7ALpG9g&sz=w1000" alt="About me photo">
+        </div>
+      </div>
+    </section>
 
-    function clearSavedAccess() {
-      localStorage.removeItem(ACCESS_KEY);
-    }
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
 
-    function saveState() {
-      const state = {
-        availableRiddles,
-        currentRiddle,
-        completedCount,
-        skippedCount,
-        caughtCount,
-        maxSkips,
-        seenCount,
-        timeoutEnd,
-        completedItems,
-        photoSubmissions,
-        pendingPhotoData
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
+        <div class="card experience-item">
+          <h3>College Experience</h3>
+          <ul class="timeline">
+            <li>
+              <strong>Orange Coast College</strong>
+              Player (2017–2019)
+            </li>
+            <li>
+              <strong>University of Jamestown</strong>
+              Player (2020–2023) • Assistant & Head Coach (2023–2025)
+            </li>
+          </ul>
 
-    function loadState() {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return false;
+          <h3 style="margin-top:20px;">Youth Coaching</h3>
+          <ul class="timeline">
+            <li>
+              <strong>Youth & High School Athletes</strong>
+              Experience coaching youth, high school (Edison, Fountain Valley), and club volleyball (Balboa Bay (2017–2021), Pioneers (2023–2025))
+            </li>
+          </ul>
 
-      try {
-        const state = JSON.parse(raw);
-        availableRiddles = Array.isArray(state.availableRiddles) ? state.availableRiddles : [...riddles];
-        currentRiddle = typeof state.currentRiddle === 'string' ? state.currentRiddle : null;
-        completedCount = Number.isInteger(state.completedCount) ? state.completedCount : 0;
-        skippedCount = Number.isInteger(state.skippedCount) ? state.skippedCount : 0;
-        caughtCount = Number.isInteger(state.caughtCount) ? state.caughtCount : 0;
-        maxSkips = Number.isInteger(state.maxSkips) ? state.maxSkips : 3;
-        seenCount = Number.isInteger(state.seenCount) ? state.seenCount : 0;
-        timeoutEnd = typeof state.timeoutEnd === 'number' ? state.timeoutEnd : null;
-        completedItems = Array.isArray(state.completedItems) ? state.completedItems : [];
-        photoSubmissions = Array.isArray(state.photoSubmissions) ? state.photoSubmissions : [];
-        pendingPhotoData = typeof state.pendingPhotoData === 'string' ? state.pendingPhotoData : null;
-        return true;
-      } catch (error) {
-        console.error('Could not load saved game state.', error);
-        return false;
-      }
-    }
+          <div style="position:relative;">
+        <button onclick="scrollLeftFunc()" style="position:absolute; left:-10px; top:50%; transform:translateY(-50%); z-index:5; background:#fff; color:#000; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer;">←</button>
+        <div id="servicesSlider" class="swipe-gallery">
+            <img src="https://drive.google.com/thumbnail?id=1vr5Ie5c5qRuVOIqoZo7XWvNkLZO1LII0&sz=w1000" alt="Gallery photo 1">
+            <img src="https://drive.google.com/thumbnail?id=1cr1Q_QmF25Hvkhrnb34Au3e21xf0La5H&sz=w1000" alt="Gallery photo 2">
+            <img src="https://drive.google.com/thumbnail?id=14ev0G6QYd9TKx_VMLfUpAhH_IXjkXjRF&sz=w1000" alt="Playing experience photo 1">
+            <img src="https://drive.google.com/thumbnail?id=1-0cQZT5atLTSp8SBTMJAa2hpkrXbyTkv&sz=w1000" alt="Playing experience photo 2">
+            <img src="https://drive.google.com/thumbnail?id=1oNxC-9F9nOt7nGp4XLRwfcmNISsgwXz1&sz=w1000" alt="Coaching experience photo 1">
+          </div>
+        </div>
+      </div>
+    </section>
 
-    function renderCompletedList() {
-      completedList.innerHTML = '';
-      completedItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        completedList.appendChild(li);
-      });
-    }
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Services & Pricing</h2>
 
-    function renderSubmissions() {
-      submissionGrid.innerHTML = '';
-
-      if (!photoSubmissions.length) {
-        submissionGrid.innerHTML = '<div style="color:#64748b;font-size:0.92rem;">No photos yet.</div>';
-        return;
-      }
-
-      photoSubmissions.slice().reverse().forEach((submission, index) => {
-        const card = document.createElement('div');
-        card.className = 'submission-card';
-
-        const img = document.createElement('img');
-        img.src = submission.image;
-        img.alt = submission.prompt || 'Submission photo';
-        img.onclick = () => openOverlay(submission.image, submission.prompt || `Submission ${photoSubmissions.length - index}`);
-
-        const caption = document.createElement('div');
-        caption.className = 'submission-caption';
-        caption.textContent = submission.prompt || 'Untitled submission';
-
-        card.appendChild(img);
-        card.appendChild(caption);
-        submissionGrid.appendChild(card);
-      });
-    }
-
-    function openOverlay(src, caption) {
-      overlayImage.src = src;
-      overlayCaption.textContent = caption;
-      photoOverlay.classList.add('active');
-    }
-
-    function closeOverlay() {
-      photoOverlay.classList.remove('active');
-    }
-
-    closeOverlayBtn.onclick = closeOverlay;
-    photoOverlay.onclick = (event) => {
-      if (event.target === photoOverlay) closeOverlay();
-    };
-
-    function updateStats() {
-      document.getElementById('completedCount').textContent = completedCount;
-      document.getElementById('skippedCount').textContent = skippedCount;
-      document.getElementById('remainingSkips').textContent = Math.max(0, maxSkips - skippedCount);
-      document.getElementById('caughtCount').textContent = caughtCount;
-      document.getElementById('remainingCount').textContent = availableRiddles.length;
-      document.getElementById('seenCount').textContent = seenCount;
-    }
-
-    function isTimedOut() {
-      return timeoutEnd && Date.now() < timeoutEnd;
-    }
-
-    function setGameDisabled(disabled) {
-      startOrCompleteBtn.disabled = disabled;
-      addPhotoBtn.disabled = disabled;
-      skipBtn.disabled = disabled || skippedCount >= maxSkips;
-    }
-
-    function formatTimeLeft(ms) {
-      const totalSeconds = Math.ceil(ms / 1000);
-      const minutes = Math.floor(totalSeconds / 60);
-      const seconds = totalSeconds % 60;
-      return `${minutes}:${String(seconds).padStart(2, '0')}`;
-    }
-
-    function refreshTimer() {
-      const remainingMs = timeoutEnd - Date.now();
-      if (remainingMs <= 0) {
-        clearInterval(timeoutInterval);
-        timeoutInterval = null;
-        timeoutEnd = null;
-        statusText.textContent = 'Time out is over. You can play again.';
-        setGameDisabled(false);
-        saveState();
-        return;
-      }
-
-      statusText.textContent = `Caught! Time out: ${formatTimeLeft(remainingMs)} remaining.`;
-    }
-
-    function startTimeout() {
-      const durationMinutes = caughtCount;
-      const durationMs = durationMinutes * 60 * 1000;
-
-      timeoutEnd = Date.now() + durationMs;
-      setGameDisabled(true);
-      clearInterval(timeoutInterval);
-
-      function refreshCaughtTimer() {
-        const remainingMs = timeoutEnd - Date.now();
-        if (remainingMs <= 0) {
-          clearInterval(timeoutInterval);
-          timeoutInterval = null;
-          timeoutEnd = null;
-          statusText.textContent = 'Time out is over. You can play again.';
-          setGameDisabled(false);
-          saveState();
-          return;
-        }
-        statusText.textContent = `Caught (${durationMinutes} min penalty)! Time out: ${formatTimeLeft(remainingMs)} remaining.`;
-      }
-
-      refreshCaughtTimer();
-      timeoutInterval = setInterval(refreshCaughtTimer, 250);
-      saveState();
-    }
-
-    function restoreTimeoutIfNeeded() {
-      clearInterval(timeoutInterval);
-      timeoutInterval = null;
-
-      if (isTimedOut()) {
-        setGameDisabled(true);
-        const activePenaltyMinutes = Math.max(1, caughtCount);
-        function refreshCaughtTimer() {
-          const remainingMs = timeoutEnd - Date.now();
-          if (remainingMs <= 0) {
-            clearInterval(timeoutInterval);
-            timeoutInterval = null;
-            timeoutEnd = null;
-            statusText.textContent = 'Time out is over. You can play again.';
-            setGameDisabled(false);
-            saveState();
-            return;
+        <style>
+          .service-row { display:flex; gap:24px; align-items:center; }
+          .service-row .text { flex:1.2; }
+          .service-row .media { flex:0.8; }
+          .service-row .media img { width:100%; height:260px; object-fit:cover; border-radius:12px; }
+          @media (max-width: 900px) {
+            .service-row { flex-direction:column; }
           }
-          statusText.textContent = `Caught (${activePenaltyMinutes} min penalty)! Time out: ${formatTimeLeft(remainingMs)} remaining.`;
-        }
-        refreshCaughtTimer();
-        timeoutInterval = setInterval(refreshCaughtTimer, 250);
-      } else {
-        timeoutEnd = null;
-      }
-    }
+        </style>
 
-    function renderGameState() {
-      renderCompletedList();
-      renderSubmissions();
-      updateStats();
+        <div style="display:grid; gap:20px;">
+          <div class="card service-item service-row">
+            <div class="text">
+              <h3>Private Lessons</h3>
+              <div class="price-box">$60 / hour</div>
+              <p style="margin-top: 12px; color: var(--muted);">
+                Uses video replay, hitting sticks, and setting/passing targets to reinforce good habits and provide instant feedback.
+              </p>
+            </div>
+            <div class="media">
+              <div class="swipe-gallery">
+                <img src="https://drive.google.com/thumbnail?id=12URfkfej_EcasP7GIy0Ds1V90ITy-z4l&sz=w1000" alt="Training tools photo">
+              </div>
+            </div>
+          </div>
 
-      if (currentRiddle) {
-        challengeNumber.textContent = `Challenge ${seenCount}`;
-        riddleText.textContent = currentRiddle;
-      } else if (availableRiddles.length === 0 && seenCount > 0) {
-        challengeNumber.textContent = 'Finished';
-        riddleText.textContent = 'All challenges have been used.';
-        statusText.textContent = 'Press reset to start over.';
-      } else {
-        challengeNumber.textContent = 'Challenge Ready';
-        riddleText.textContent = 'Press start to begin.';
-      }
+          <div class="card service-item service-row">
+            <div class="text">
+              <h3>Small Group Training</h3>
+              <div class="price-box">Price varies by group size</div>
+              <p style="margin-top: 12px; color: var(--muted);">
+                If times are not available, you may request to combine with athletes of similar skill, age, and position focus. Sessions will be set up if all parties agree.
+              </p>
+            </div>
+            <div class="media">
+              <img src="https://drive.google.com/thumbnail?id=1n890uW4aDpdXZ2TP5SMmGdNRLvzZc4QV&sz=w1000" alt="Small group training photo 1">
+            </div>
+          </div>
 
-      if (!currentRiddle && availableRiddles.length > 0 && !isTimedOut() && seenCount > 0) {
-        statusText.textContent = 'Press Start / Complete to get the next challenge.';
-      }
+          
+        </div>
+      </div>
+    </section>
 
-      if (!currentRiddle && availableRiddles.length > 0 && seenCount === 0 && !isTimedOut()) {
-        statusText.textContent = 'Press Start / Complete to get your first challenge.';
-      }
+    
 
-      if (currentRiddle && !pendingPhotoData && !isTimedOut()) {
-        statusText.textContent = 'Take or choose a photo before completing this challenge.';
-      }
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
 
-      if (currentRiddle && pendingPhotoData && !isTimedOut()) {
-        statusText.textContent = 'Photo ready. Press Start / Complete to submit this challenge.';
-      }
+        <div class="contact-grid">
+          <div class="card contact-item">
+            <h3>Phone</h3>
+            <p><a href="tel:7144748592">714-474-8592</a></p>
+          </div>
 
-      if (availableRiddles.length === 0) {
-        setGameDisabled(true);
-      } else {
-        setGameDisabled(false);
-      }
+          <div class="card contact-item">
+            <h3>Email</h3>
+            <p><a href="mailto:downeyhuynh1@gmail.com">downeyhuynh1@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-      restoreTimeoutIfNeeded();
-      updateStats();
-    }
-
-    function pickRandomRiddle() {
-      if (availableRiddles.length === 0) {
-        currentRiddle = null;
-        riddleText.textContent = 'All challenges have been used.';
-        challengeNumber.textContent = 'Finished';
-        statusText.textContent = 'Press reset to start over.';
-        setGameDisabled(true);
-        updateStats();
-        saveState();
-        return;
-      }
-
-      const index = Math.floor(Math.random() * availableRiddles.length);
-      currentRiddle = availableRiddles.splice(index, 1)[0];
-      pendingPhotoData = null;
-      seenCount++;
-      challengeNumber.textContent = `Challenge ${seenCount}`;
-      riddleText.textContent = currentRiddle;
-      if (!isTimedOut()) {
-        statusText.textContent = 'Take or choose a photo before completing this challenge.';
-      }
-      updateStats();
-      saveState();
-    }
-
-    function requireCurrentChallenge() {
-      if (!currentRiddle) {
-        alert('Start a challenge first.');
-        return false;
-      }
-      return true;
-    }
-
-    addPhotoBtn.onclick = () => {
-      if (isTimedOut()) return;
-      if (!requireCurrentChallenge()) return;
-      photoInput.value = '';
-      photoInput.click();
-    };
-
-    photoInput.onchange = (event) => {
-      const file = event.target.files && event.target.files[0];
-      if (!file || !currentRiddle) return;
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        pendingPhotoData = reader.result;
-        statusText.textContent = 'Photo ready. Press Start / Complete to submit this challenge.';
-        saveState();
-      };
-      reader.readAsDataURL(file);
-    };
-
-    startOrCompleteBtn.onclick = () => {
-      if (isTimedOut()) return;
-
-      if (!currentRiddle) {
-        pickRandomRiddle();
-        return;
-      }
-
-      if (!pendingPhotoData) {
-        alert('You need to take or choose a photo before completing this challenge.');
-        return;
-      }
-
-      completedCount++;
-      completedItems.push(currentRiddle);
-      photoSubmissions.push({
-        prompt: currentRiddle,
-        image: pendingPhotoData,
-        createdAt: Date.now()
-      });
-      renderCompletedList();
-      renderSubmissions();
-      currentRiddle = null;
-      pendingPhotoData = null;
-      saveState();
-      pickRandomRiddle();
-    };
-
-    skipBtn.onclick = () => {
-      if (isTimedOut()) return;
-      if (skippedCount >= maxSkips) return;
-
-      skippedCount++;
-      currentRiddle = null;
-      pendingPhotoData = null;
-      saveState();
-      pickRandomRiddle();
-
-      if (skippedCount >= maxSkips) {
-        skipBtn.disabled = true;
-      }
-
-      updateStats();
-      saveState();
-    };
-
-    document.getElementById('caughtBtn').onclick = () => {
-      const password = prompt('Enter admin password to mark as caught:');
-      if (password !== 'Jesus') {
-        alert('Incorrect password.');
-        return;
-      }
-
-      caughtCount++;
-      saveState();
-      startTimeout();
-      updateStats();
-    };
-
-    document.getElementById('resetBtn').onclick = () => {
-      const password = prompt('Enter admin password to reset:');
-      if (password !== 'Jesus') {
-        alert('Incorrect password. Reset denied.');
-        return;
-      }
-
-      localStorage.removeItem(STORAGE_KEY);
-      clearSavedAccess();
-      availableRiddles = [...riddles];
-      currentRiddle = null;
-      completedCount = 0;
-      skippedCount = 0;
-      caughtCount = 0;
-      seenCount = 0;
-      completedItems = [];
-      photoSubmissions = [];
-      pendingPhotoData = null;
-      clearInterval(timeoutInterval);
-      timeoutInterval = null;
-      timeoutEnd = null;
-      completedList.innerHTML = '';
-      submissionGrid.innerHTML = '';
-      riddleText.textContent = 'Press start to begin.';
-      challengeNumber.textContent = 'Challenge Ready';
-      statusText.textContent = 'Press Start / Complete to get your first challenge.';
-      setGameDisabled(false);
-      updateStats();
-      saveState();
-    };
-
-    startGameBtn.onclick = () => {
-      const password = prompt('Enter password to start the game:');
-      if (password !== 'Jesus') {
-        alert('Incorrect password.');
-        return;
-      }
-      saveAccessGranted();
-      startScreen.style.display = 'none';
-    };
-
-    loadState();
-    renderGameState();
-
-    if (hasSavedAccess()) {
-      startScreen.style.display = 'none';
-    }
-  </script>
+  <footer>
+    <div class="container">
+      <p>© 2026 Downey Huynh | Seams Right Volleyball. All rights reserved.</p>
+      <p>Orange County Volleyball Training</p>
+    </div>
+  </footer>
 </body>
 </html>
