@@ -7,19 +7,18 @@
   <title>Seams Right Volleyball | Orange County Private Training</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f2f4f6;
-      --bg-deep: #e6ebf0;
-      --surface: #ffffff;
-      --text: #121820;
-      --muted: #5c6672;
-      --line: #d5dce4;
-      --ink: #0c1219;
-      --accent: #1e4d3c;
-      --accent-hover: #163a2e;
-      --max: 1080px;
+      --bg-gray: #b8b8b8;
+      --bg-gray-light: #d0d0d0;
+      --white: #ffffff;
+      --ink: #1a1a1a;
+      --muted: #666666;
+      --line: #e8e8e8;
+      --yellow: #f5c518;
+      --yellow-hover: #e0b400;
+      --max: 1100px;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -28,12 +27,9 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Outfit", sans-serif;
-      background:
-        radial-gradient(ellipse 80% 50% at 10% -10%, #dde8e2 0%, transparent 55%),
-        radial-gradient(ellipse 60% 40% at 100% 0%, #d8e0ea 0%, transparent 50%),
-        var(--bg);
-      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      background: var(--white);
+      color: var(--ink);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
     }
@@ -43,7 +39,7 @@
     a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(92%, var(--max));
+      width: min(90%, var(--max));
       margin: 0 auto;
     }
 
@@ -53,9 +49,8 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 50;
-      padding: 20px 0;
-      color: #fff;
+      z-index: 40;
+      padding: 22px 0;
     }
 
     .nav {
@@ -68,24 +63,23 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
     }
 
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
-      border: 1px solid rgba(255,255,255,0.35);
     }
 
-    .logo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .brand-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     nav ul {
@@ -97,128 +91,182 @@
     }
 
     nav a {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
-      color: rgba(255,255,255,0.82);
-      transition: color 0.2s var(--ease);
+      color: var(--ink);
+      opacity: 0.75;
+      transition: opacity 0.2s;
     }
 
-    nav a:hover { color: #fff; }
+    nav a:hover { opacity: 1; }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 22px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.92rem;
-      border: none;
-      transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+    .nav-cta {
+      display: inline-block;
+      padding: 9px 18px;
+      background: var(--yellow);
+      color: var(--ink);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      opacity: 1 !important;
+      transition: background 0.2s, transform 0.2s var(--ease);
     }
 
-    .btn:hover {
-      background: var(--accent-hover);
+    .nav-cta:hover {
+      background: var(--yellow-hover);
       transform: translateY(-1px);
     }
-
-    .btn-light {
-      background: #fff;
-      color: var(--ink);
-    }
-
-    .btn-light:hover {
-      background: #f0f2f4;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.55);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.12);
-      transform: translateY(-1px);
-    }
-
-    header .btn {
-      background: #fff;
-      color: var(--ink);
-      padding: 9px 16px;
-      font-size: 0.85rem;
-    }
-
-    header .btn:hover { background: #f0f2f4; }
 
     /* —— Hero —— */
     .hero {
       position: relative;
+      background: linear-gradient(180deg, var(--bg-gray-light) 0%, var(--bg-gray) 55%, #a8a8a8 100%);
+      padding: 100px 0 0;
+      overflow: hidden;
       min-height: 92vh;
       min-height: 92dvh;
       display: flex;
-      align-items: flex-end;
-      color: #fff;
-      overflow: hidden;
+      flex-direction: column;
     }
 
-    .hero-media {
+    .hero-watermark {
       position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      transform: scale(1.04);
-      animation: heroZoom 8s var(--ease) forwards;
-    }
-
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(8,12,16,0.55) 0%, rgba(8,12,16,0.25) 40%, rgba(8,12,16,0.78) 100%);
-    }
-
-    .hero-inner {
-      position: relative;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(5rem, 18vw, 14rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.28);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
       z-index: 1;
-      width: min(92%, var(--max));
+      animation: fadeIn 1.2s var(--ease) both;
+    }
+
+    .hero-stage {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: center;
+      width: min(92%, 720px);
       margin: 0 auto;
-      padding: 0 0 72px;
-      animation: fadeUp 0.9s var(--ease) both;
+      padding-bottom: 0;
+      animation: fadeUp 0.9s var(--ease) 0.15s both;
+    }
+
+    .hero-photo {
+      width: min(100%, 420px);
+      margin: 0 auto -8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      max-height: 58vh;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%) contrast(1.05);
+      mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      margin-top: -72px;
+      padding: 0 16px 48px;
     }
 
     .hero-brand {
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
       font-weight: 600;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
-      max-width: 14ch;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(26,26,26,0.55);
+      margin-bottom: 10px;
+    }
+
+    .hero-name {
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(2.6rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+      margin-bottom: 14px;
     }
 
     .hero-lead {
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      font-weight: 400;
-      color: rgba(255,255,255,0.88);
-      max-width: 36ch;
-      margin-bottom: 28px;
-      line-height: 1.45;
+      font-size: 1rem;
+      color: rgba(26,26,26,0.78);
+      max-width: 38ch;
+      margin: 0 auto 24px;
+      line-height: 1.5;
     }
 
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: background 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 2px solid rgba(26,26,26,0.35);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    /* Wave into white */
+    .hero-wave {
+      position: relative;
+      z-index: 5;
+      margin-top: -1px;
+      line-height: 0;
+    }
+
+    .hero-wave svg {
+      width: 100%;
+      height: clamp(60px, 10vw, 120px);
+      display: block;
     }
 
     /* —— Sections —— */
@@ -228,199 +276,198 @@
     }
 
     .section-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .section-title {
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: clamp(1.7rem, 3vw, 2.2rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 8px;
-      line-height: 1.2;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      line-height: 1.15;
     }
 
     .section-lead {
+      text-align: center;
       color: var(--muted);
       font-size: 1.05rem;
       max-width: 42ch;
-      margin-bottom: 36px;
+      margin: 0 auto 48px;
     }
 
     /* —— Pricing —— */
-    #pricing {
-      background: var(--surface);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-top: 1px solid var(--line);
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
     }
 
-    .price-item {
-      padding: 28px 0;
+    .price-card {
+      text-align: center;
+      padding: 36px 28px;
+      background: #f7f7f7;
+      border-radius: 16px;
     }
 
-    .price-item:first-child {
-      padding-right: 36px;
-      border-right: 1px solid var(--line);
-    }
-
-    .price-item:last-child {
-      padding-left: 36px;
-    }
-
-    .price-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
+    .price-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .price {
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: 2.4rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 10px;
+      font-family: "Oswald", sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
       line-height: 1;
+      margin-bottom: 12px;
     }
 
-    .price-item p {
+    .price span {
+      font-family: "DM Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--muted);
-      font-size: 0.98rem;
-      max-width: 32ch;
     }
 
-    /* —— Locations —— */
-    .hours-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 28px;
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
+    .price-card p {
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .hours-line strong {
+    /* —— Schedule —— */
+    #locations {
+      background: #fafafa;
+    }
+
+    .hours-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hours-bar strong {
       color: var(--ink);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .locations-list {
+      max-width: 800px;
+      margin: 0 auto;
       display: grid;
       gap: 0;
     }
 
     .location-row {
       display: grid;
-      grid-template-columns: 1.2fr 1.4fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1.1fr 1.5fr 1fr;
+      gap: 16px;
       align-items: baseline;
-      padding: 22px 0;
+      padding: 24px 8px;
       border-bottom: 1px solid var(--line);
-      animation: fadeUp 0.7s var(--ease) both;
     }
 
-    .location-row:nth-child(1) { animation-delay: 0.05s; }
-    .location-row:nth-child(2) { animation-delay: 0.12s; }
-    .location-row:nth-child(3) { animation-delay: 0.19s; }
+    .location-row:first-child {
+      border-top: 1px solid var(--line);
+    }
 
     .location-row h3 {
-      font-size: 1.05rem;
+      font-family: "Oswald", sans-serif;
+      font-size: 1.15rem;
       font-weight: 600;
-      color: var(--ink);
+      letter-spacing: 0.02em;
     }
 
     .location-row .address {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .location-row .days {
-      font-size: 0.95rem;
-      color: var(--text);
       text-align: right;
+      font-size: 0.92rem;
+      font-weight: 600;
     }
 
     .location-row .days span {
       display: block;
+      font-weight: 400;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       margin-top: 2px;
     }
 
     /* —— About —— */
-    #about {
-      background: var(--surface);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
     .about-grid {
       display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
-      gap: 48px;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px;
       align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
-
-    .about-copy p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 16px;
-      max-width: 48ch;
-    }
-
-    .about-copy p:last-of-type { margin-bottom: 0; }
 
     .about-photo {
+      border-radius: 12px;
       overflow: hidden;
-      border-radius: 4px;
       aspect-ratio: 4 / 5;
+      background: var(--bg-gray);
     }
 
     .about-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .about-copy .section-label,
+    .about-copy .section-title {
+      text-align: left;
+    }
+
+    .about-copy .section-title {
+      margin-bottom: 18px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 14px;
+      max-width: 42ch;
     }
 
     /* —— Contact —— */
-    .contact-block {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 28px;
+    #contact {
+      background: #fafafa;
+      text-align: center;
+      padding: 88px 0;
     }
 
-    .contact-block .section-title {
-      margin-bottom: 10px;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    #contact .hero-cta {
+      margin-bottom: 28px;
     }
 
     .contact-meta {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 8px 28px;
       color: var(--muted);
@@ -430,66 +477,61 @@
     .contact-meta a {
       text-decoration: underline;
       text-underline-offset: 3px;
-      transition: color 0.2s;
     }
 
     .contact-meta a:hover { color: var(--ink); }
 
     footer {
-      padding: 28px 0 48px;
+      padding: 28px 0 40px;
+      text-align: center;
       color: var(--muted);
       font-size: 0.85rem;
-      border-top: 1px solid var(--line);
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes heroZoom {
-      from { transform: scale(1.08); }
-      to { transform: scale(1); }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 800px) {
-      header { padding: 14px 0; }
-
-      .hero { min-height: 85vh; min-height: 85dvh; }
-
-      .hero-inner { padding-bottom: 48px; }
-
-      nav ul { gap: 14px; }
+      header { padding: 16px 0; }
 
       nav li:not(:last-child) { display: none; }
+
+      .hero {
+        min-height: auto;
+        padding-top: 88px;
+      }
+
+      .hero-photo {
+        width: min(100%, 300px);
+      }
+
+      .hero-photo img {
+        max-height: 42vh;
+      }
+
+      .hero-copy {
+        margin-top: -48px;
+        padding-bottom: 32px;
+      }
 
       section { padding: 56px 0; }
 
       .pricing-grid {
         grid-template-columns: 1fr;
-      }
-
-      .price-item:first-child {
-        padding-right: 0;
-        padding-bottom: 24px;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .price-item:last-child {
-        padding-left: 0;
-        padding-top: 24px;
+        max-width: 360px;
       }
 
       .location-row {
         grid-template-columns: 1fr;
-        gap: 6px;
+        gap: 4px;
+        padding: 20px 4px;
       }
 
       .location-row .days {
@@ -503,8 +545,19 @@
       }
 
       .about-photo {
-        max-width: 320px;
-        aspect-ratio: 5 / 4;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .about-copy .section-label,
+      .about-copy .section-title {
+        text-align: center;
+      }
+
+      .about-copy p {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
     }
   </style>
@@ -512,19 +565,18 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand" aria-label="Seams Right Volleyball home">
+      <a href="#" class="brand">
         <div class="logo">
           <img src="https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500" alt="" />
         </div>
-        <span class="brand-name">Seams Right</span>
+        Seams Right Volleyball
       </a>
-
       <nav>
         <ul>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#locations">Schedule</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="sms:17144748592" class="btn">Text to Book</a></li>
+          <li><a href="sms:17144748592" class="nav-cta">Text to Book</a></li>
         </ul>
       </nav>
     </div>
@@ -532,35 +584,47 @@
 
   <main>
     <section class="hero">
-      <div class="hero-media" aria-hidden="true">
-        <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w2000" alt="" />
-      </div>
-      <div class="hero-inner">
-        <h1 class="hero-brand">Seams Right Volleyball</h1>
-        <p class="hero-lead">Private lessons in Orange County — fundamentals, game skills, and clear coaching for every level.</p>
-        <div class="hero-cta">
-          <a href="sms:17144748592" class="btn btn-light">Text (714) 474-8592</a>
-          <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Sign Waiver</a>
+      <div class="hero-watermark" aria-hidden="true">TRAIN</div>
+
+      <div class="hero-stage">
+        <div class="hero-photo">
+          <img src="https://drive.google.com/thumbnail?id=1VkJS3UHfawPGrSjX9qZgYw1RO7ALpG9g&sz=w1200" alt="Downey Huynh" />
         </div>
+
+        <div class="hero-copy">
+          <p class="hero-brand">Seams Right Volleyball</p>
+          <h1 class="hero-name">I'M DOWNEY.</h1>
+          <p class="hero-lead">Private volleyball training in Orange County — fundamentals, game skills, and coaching for every level.</p>
+          <div class="hero-cta">
+            <a href="sms:17144748592" class="btn btn-primary">Text to Book</a>
+            <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Sign Waiver</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#ffffff" d="M0,64 C360,120 1080,0 1440,64 L1440,120 L0,120 Z"></path>
+        </svg>
       </div>
     </section>
 
     <section id="pricing">
       <div class="container">
         <p class="section-label">Pricing</p>
-        <h2 class="section-title">Simple rates</h2>
+        <h2 class="section-title">Simple Rates</h2>
         <p class="section-lead">Book a private hour or ask about a small group.</p>
 
         <div class="pricing-grid">
-          <div class="price-item">
+          <div class="price-card">
             <h3>Private Lesson</h3>
-            <div class="price">$60<span style="font-size:1rem; font-family:Outfit,sans-serif; font-weight:500; color:var(--muted);"> / hour</span></div>
+            <div class="price">$60 <span>/ hour</span></div>
             <p>Video replay and training tools for instant feedback.</p>
           </div>
-          <div class="price-item">
+          <div class="price-card">
             <h3>Small Group</h3>
             <div class="price">Varies</div>
-            <p>Matched by skill, age, and position. Text to ask about open spots.</p>
+            <p>Matched by skill, age, and position. Text for open spots.</p>
           </div>
         </div>
       </div>
@@ -569,10 +633,10 @@
     <section id="locations">
       <div class="container">
         <p class="section-label">Schedule</p>
-        <h2 class="section-title">Where &amp; when</h2>
-        <p class="section-lead">Choose the location closest to you, then text to book.</p>
+        <h2 class="section-title">Where &amp; When</h2>
+        <p class="section-lead">Pick the location closest to you, then text to book.</p>
 
-        <div class="hours-line">
+        <div class="hours-bar">
           <span><strong>Weekdays</strong> 4:30–8 PM</span>
           <span><strong>Sunday</strong> 9 AM–12 PM</span>
         </div>
@@ -611,14 +675,14 @@
     <section id="about">
       <div class="container">
         <div class="about-grid">
+          <div class="about-photo">
+            <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000" alt="Volleyball coaching">
+          </div>
           <div class="about-copy">
             <p class="section-label">About</p>
             <h2 class="section-title">Coach Downey Huynh</h2>
             <p>I started volleyball late and had no roadmap — clubs, training, or how to play in college. I went from not playing freshman year to competing at Orange Coast College and the University of Jamestown, where I later coached as assistant and head coach.</p>
             <p>Now I help athletes and parents skip the confusion: strong fundamentals, real game skills, and the guidance I wish I had starting out.</p>
-          </div>
-          <div class="about-photo">
-            <img src="https://drive.google.com/thumbnail?id=1VkJS3UHfawPGrSjX9qZgYw1RO7ALpG9g&sz=w1000" alt="Downey Huynh">
           </div>
         </div>
       </div>
@@ -626,16 +690,12 @@
 
     <section id="contact">
       <div class="container">
-        <div class="contact-block">
-          <div>
-            <p class="section-label">Book</p>
-            <h2 class="section-title">Ready to train?</h2>
-            <p class="section-lead" style="margin-bottom:0;">Text to schedule. Complete the waiver before your first session.</p>
-          </div>
-          <div class="contact-actions">
-            <a href="sms:17144748592" class="btn">Text to Book</a>
-            <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn" style="background:transparent; color:var(--ink); border:1px solid var(--line);">Sign Waiver</a>
-          </div>
+        <p class="section-label">Book</p>
+        <h2 class="section-title">Ready to Train?</h2>
+        <p class="section-lead">Text to schedule. Complete the waiver before your first session.</p>
+        <div class="hero-cta">
+          <a href="sms:17144748592" class="btn btn-primary">Text (714) 474-8592</a>
+          <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Sign Waiver</a>
         </div>
         <div class="contact-meta">
           <a href="sms:17144748592">(714) 474-8592</a>
