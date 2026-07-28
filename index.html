@@ -218,42 +218,76 @@
       font-size: 0.95rem;
     }
 
+    .hours-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hours-chip {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      color: var(--accent-2);
+    }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
     .locations-grid {
       display: grid;
       gap: 12px;
     }
 
-    .location-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: start;
-      padding: 16px;
+    .location-card {
+      padding: 18px;
       background: var(--soft);
       border: 1px solid var(--line);
       border-radius: var(--radius);
     }
 
-    .location-row h3 {
+    .location-card h3 {
       font-size: 1rem;
       margin-bottom: 4px;
     }
 
-    .location-row .address {
+    .location-card .address {
       color: var(--muted);
       font-size: 0.9rem;
+      margin-bottom: 12px;
     }
 
-    .schedule {
-      text-align: right;
-      font-size: 0.9rem;
-      white-space: nowrap;
+    .schedule-block + .schedule-block {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
     }
 
-    .schedule strong {
-      display: block;
-      color: var(--accent-2);
-      margin-bottom: 2px;
+    .schedule-block .time {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 6px;
+    }
+
+    .day-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .day-tag {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     .about-grid {
@@ -313,14 +347,6 @@
       }
 
       .hero-card img { height: 260px; }
-
-      .location-row {
-        grid-template-columns: 1fr;
-      }
-
-      .schedule {
-        text-align: left;
-      }
 
       .about-grid img {
         max-height: 280px;
@@ -400,38 +426,53 @@
 
     <section id="locations">
       <div class="container">
-        <h2 class="section-title">Locations & Schedule</h2>
+        <h2 class="section-title">Where & When</h2>
+        <p class="section-lead">Pick the location closest to you, then text to book a slot.</p>
+
+        <div class="hours-summary">
+          <span class="hours-chip">Weekdays · 4:30–8 PM</span>
+          <span class="hours-chip">Sunday · 9 AM–12 PM</span>
+        </div>
+
         <div class="locations-grid">
-          <div class="location-row">
-            <div>
-              <h3>Friendship (Smith-Murphy) Park</h3>
-              <p class="address">5290 Cameron Dr, Buena Park, CA 90621</p>
+          <div class="location-card">
+            <h3>Fountain Valley</h3>
+            <p class="address">17200 Oak St, Fountain Valley, CA 92708</p>
+            <div class="schedule-block">
+              <p class="time">4:30–8 PM</p>
+              <div class="day-tags">
+                <span class="day-tag">Mon</span>
+                <span class="day-tag">Wed</span>
+                <span class="day-tag">Thu</span>
+              </div>
             </div>
-            <div class="schedule">
-              <strong>Fri</strong>
-              4:30–6:30 PM
-            </div>
-          </div>
-          <div class="location-row">
-            <div>
-              <h3>McDowell Park</h3>
-              <p class="address">17200 Oak St, Fountain Valley, CA 92708</p>
-            </div>
-            <div class="schedule">
-              <strong>Wed–Thu</strong>
-              4:30–6:30 PM
-              <strong>Sun</strong>
-              9 AM–1 PM
+            <div class="schedule-block">
+              <p class="time">9 AM–12 PM</p>
+              <div class="day-tags">
+                <span class="day-tag">Sun</span>
+              </div>
             </div>
           </div>
-          <div class="location-row">
-            <div>
-              <h3>Rossmoor Park</h3>
-              <p class="address">3232 Hedwig Rd, Rossmoor, CA 90720</p>
+
+          <div class="location-card">
+            <h3>Long Beach</h3>
+            <p class="address">5355 E Eliot St, Long Beach, CA 90803</p>
+            <div class="schedule-block">
+              <p class="time">4:30–8 PM</p>
+              <div class="day-tags">
+                <span class="day-tag">Tue</span>
+              </div>
             </div>
-            <div class="schedule">
-              <strong>Mon–Tue</strong>
-              4:30–6:30 PM
+          </div>
+
+          <div class="location-card">
+            <h3>Buena Park</h3>
+            <p class="address">5290 Cameron Dr, Buena Park, CA 90621</p>
+            <div class="schedule-block">
+              <p class="time">4:30–8 PM</p>
+              <div class="day-tags">
+                <span class="day-tag">Fri</span>
+              </div>
             </div>
           </div>
         </div>
