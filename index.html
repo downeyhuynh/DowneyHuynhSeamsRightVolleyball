@@ -814,5 +814,20 @@
       <p>© 2026 Downey Huynh · Seams Right Volleyball</p>
     </div>
   </footer>
+  <script>
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
+    function goToTop() {
+      window.scrollTo(0, 0);
+      if (location.hash) {
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+    }
+
+    goToTop();
+    window.addEventListener("load", goToTop);
+  </script>
 </body>
 </html>
