@@ -5,18 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Private volleyball lessons in Orange County. $60/hr with Downey Huynh — collegiate player and head coach. Text to book.">
   <title>Seams Right Volleyball | Orange County Private Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --card: #111111;
-      --text: #ffffff;
-      --muted: #bfbfbf;
-      --line: #2a2a2a;
-      --accent-2: #e5e5e5;
-      --soft: #1a1a1a;
-      --max: 960px;
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(0,0,0,0.6);
+      --bg: #f2f4f6;
+      --bg-deep: #e6ebf0;
+      --surface: #ffffff;
+      --text: #121820;
+      --muted: #5c6672;
+      --line: #d5dce4;
+      --ink: #0c1219;
+      --accent: #1e4d3c;
+      --accent-hover: #163a2e;
+      --max: 1080px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,10 +28,14 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      font-family: "Outfit", sans-serif;
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, #dde8e2 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, #d8e0ea 0%, transparent 50%),
+        var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
 
     img { max-width: 100%; display: block; }
@@ -39,13 +47,15 @@
       margin: 0 auto;
     }
 
+    /* —— Header —— */
     header {
-      background: #000;
-      padding: 16px 0;
-      position: sticky;
+      position: absolute;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 50;
-      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+      color: #fff;
     }
 
     .nav {
@@ -62,318 +72,457 @@
     }
 
     .logo {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.35);
     }
 
     .logo img { width: 100%; height: 100%; object-fit: cover; }
 
-    .brand-text h1 {
-      font-size: 1.05rem;
-      line-height: 1.2;
-    }
-
-    .brand-text p {
-      font-size: 0.85rem;
-      color: var(--muted);
+    .brand-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     nav ul {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 22px;
       align-items: center;
     }
 
     nav a {
       font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--muted);
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      transition: color 0.2s var(--ease);
     }
 
-    nav a:hover { color: var(--text); }
+    nav a:hover { color: #fff; }
 
     .btn {
-      display: inline-block;
-      padding: 10px 18px;
-      background: #fff;
-      color: #000;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: none;
+      transition: background 0.2s var(--ease), transform 0.2s var(--ease);
     }
 
-    .btn:hover { background: #e5e5e5; }
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
 
-    .btn-outline {
+    .btn-light {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .btn-light:hover {
+      background: #f0f2f4;
+    }
+
+    .btn-ghost {
       background: transparent;
       color: #fff;
-      border: 2px solid #fff;
+      border: 1px solid rgba(255,255,255,0.55);
     }
 
-    .btn-outline:hover {
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-1px);
+    }
+
+    header .btn {
       background: #fff;
-      color: #000;
+      color: var(--ink);
+      padding: 9px 16px;
+      font-size: 0.85rem;
     }
 
+    header .btn:hover { background: #f0f2f4; }
+
+    /* —— Hero —— */
     .hero {
-      padding: 48px 0 36px;
+      position: relative;
+      min-height: 92vh;
+      min-height: 92dvh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
 
-    .hero-copy h2 {
-      font-size: clamp(1.75rem, 4vw, 2.6rem);
-      line-height: 1.15;
-      margin-bottom: 12px;
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transform: scale(1.04);
+      animation: heroZoom 8s var(--ease) forwards;
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8,12,16,0.55) 0%, rgba(8,12,16,0.25) 40%, rgba(8,12,16,0.78) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(92%, var(--max));
+      margin: 0 auto;
+      padding: 0 0 72px;
+      animation: fadeUp 0.9s var(--ease) both;
+    }
+
+    .hero-brand {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      max-width: 14ch;
     }
 
     .hero-lead {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 20px;
-      max-width: 520px;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      max-width: 36ch;
+      margin-bottom: 28px;
+      line-height: 1.45;
     }
 
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: 12px;
     }
 
-    .cred-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 16px;
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .cred-bar span::before {
-      content: "•";
-      margin-right: 8px;
-      color: #555;
-    }
-
-    .cred-bar span:first-child::before { content: none; margin: 0; }
-
-    .hero-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--line);
-    }
-
-    .hero-card img {
-      width: 100%;
-      height: 340px;
-      object-fit: cover;
-    }
-
+    /* —— Sections —— */
     section {
-      scroll-margin-top: 80px;
-      padding: 28px 0;
+      scroll-margin-top: 24px;
+      padding: 72px 0;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
     }
 
     .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 20px;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .price-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-
-    .price {
-      font-size: 1.6rem;
-      font-weight: bold;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin-bottom: 8px;
-    }
-
-    .price-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .hours-summary {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .hours-chip {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.9rem;
-      color: var(--accent-2);
+      line-height: 1.2;
     }
 
     .section-lead {
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 16px;
+      font-size: 1.05rem;
+      max-width: 42ch;
+      margin-bottom: 36px;
     }
 
-    .locations-grid {
+    /* —— Pricing —— */
+    #pricing {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pricing-grid {
       display: grid;
-      gap: 12px;
-    }
-
-    .location-card {
-      padding: 18px;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-    }
-
-    .location-card h3 {
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .location-card .address {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .schedule-block + .schedule-block {
-      margin-top: 10px;
-      padding-top: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
       border-top: 1px solid var(--line);
     }
 
-    .schedule-block .time {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 6px;
+    .price-item {
+      padding: 28px 0;
     }
 
-    .day-tags {
+    .price-item:first-child {
+      padding-right: 36px;
+      border-right: 1px solid var(--line);
+    }
+
+    .price-item:last-child {
+      padding-left: 36px;
+    }
+
+    .price-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .price-item p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32ch;
+    }
+
+    /* —— Locations —— */
+    .hours-line {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px 28px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .day-tag {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 0.85rem;
+    .hours-line strong {
+      color: var(--ink);
       font-weight: 600;
+    }
+
+    .locations-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .location-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1.4fr 1fr;
+      gap: 20px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      animation: fadeUp 0.7s var(--ease) both;
+    }
+
+    .location-row:nth-child(1) { animation-delay: 0.05s; }
+    .location-row:nth-child(2) { animation-delay: 0.12s; }
+    .location-row:nth-child(3) { animation-delay: 0.19s; }
+
+    .location-row h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .location-row .address {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .location-row .days {
+      font-size: 0.95rem;
+      color: var(--text);
+      text-align: right;
+    }
+
+    .location-row .days span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 2px;
+    }
+
+    /* —— About —— */
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 240px;
-      gap: 24px;
-      align-items: start;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .about-grid p {
+    .about-copy p {
       color: var(--muted);
-      margin-bottom: 12px;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      max-width: 48ch;
     }
 
-    .about-grid p:last-child { margin-bottom: 0; }
+    .about-copy p:last-of-type { margin-bottom: 0; }
 
-    .about-grid img {
+    .about-photo {
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 4 / 5;
+    }
+
+    .about-photo img {
       width: 100%;
-      border-radius: var(--radius);
+      height: 100%;
       object-fit: cover;
     }
 
-    .contact-bar {
+    /* —— Contact —— */
+    .contact-block {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
+      gap: 28px;
     }
 
-    .contact-links {
+    .contact-block .section-title {
+      margin-bottom: 10px;
+    }
+
+    .contact-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 12px;
+    }
+
+    .contact-meta {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .contact-links a {
-      color: var(--muted);
+    .contact-meta a {
       text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
     }
 
-    .contact-links a:hover { color: var(--text); }
+    .contact-meta a:hover { color: var(--ink); }
 
     footer {
-      padding: 24px 0 40px;
+      padding: 28px 0 48px;
       color: var(--muted);
-      text-align: center;
       font-size: 0.85rem;
+      border-top: 1px solid var(--line);
     }
 
-    @media (max-width: 768px) {
-      .hero-grid,
-      .pricing-grid,
-      .about-grid {
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1); }
+    }
+
+    @media (max-width: 800px) {
+      header { padding: 14px 0; }
+
+      .hero { min-height: 85vh; min-height: 85dvh; }
+
+      .hero-inner { padding-bottom: 48px; }
+
+      nav ul { gap: 14px; }
+
+      nav li:not(:last-child) { display: none; }
+
+      section { padding: 56px 0; }
+
+      .pricing-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-card img { height: 260px; }
-
-      .about-grid img {
-        max-height: 280px;
-        object-fit: cover;
+      .price-item:first-child {
+        padding-right: 0;
+        padding-bottom: 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
       }
 
-      .nav { flex-direction: column; align-items: flex-start; }
+      .price-item:last-child {
+        padding-left: 0;
+        padding-top: 24px;
+      }
+
+      .location-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .location-row .days {
+        text-align: left;
+        margin-top: 6px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .about-photo {
+        max-width: 320px;
+        aspect-ratio: 5 / 4;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">
+      <a href="#" class="brand" aria-label="Seams Right Volleyball home">
         <div class="logo">
-          <img src="https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500" alt="Seams Right Volleyball logo" />
+          <img src="https://drive.google.com/thumbnail?id=1q02Lui9dcC30Sl8DEIpkPjgiBmy868nc&sz=w500" alt="" />
         </div>
-        <div class="brand-text">
-          <h1>Seams Right Volleyball</h1>
-          <p>Orange County</p>
-        </div>
-      </div>
+        <span class="brand-name">Seams Right</span>
+      </a>
 
       <nav>
         <ul>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#locations">Locations</a></li>
+          <li><a href="#locations">Schedule</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="sms:17144748592" class="btn">Text to Book</a></li>
         </ul>
@@ -383,39 +532,32 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h2>Private volleyball training — book by text</h2>
-          <p class="hero-lead">1-on-1 and small group sessions for all levels. Fundamentals, game skills, and clear guidance from a collegiate player and head coach.</p>
-
-          <div class="hero-cta">
-            <a href="sms:17144748592" class="btn">Text (714) 474-8592 to Book</a>
-            <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Sign Waiver</a>
-          </div>
-
-          <div class="cred-bar">
-            <span>Collegiate player (NAIA)</span>
-            <span>Former head coach</span>
-            <span>3 OC locations</span>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w1000" alt="Volleyball coaching" />
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://drive.google.com/thumbnail?id=1zk6YtPWlmVFwJsWedOkKYT6N_U9JtVn6&sz=w2000" alt="" />
+      </div>
+      <div class="hero-inner">
+        <h1 class="hero-brand">Seams Right Volleyball</h1>
+        <p class="hero-lead">Private lessons in Orange County — fundamentals, game skills, and clear coaching for every level.</p>
+        <div class="hero-cta">
+          <a href="sms:17144748592" class="btn btn-light">Text (714) 474-8592</a>
+          <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Sign Waiver</a>
         </div>
       </div>
     </section>
 
     <section id="pricing">
       <div class="container">
-        <h2 class="section-title">Pricing</h2>
+        <p class="section-label">Pricing</p>
+        <h2 class="section-title">Simple rates</h2>
+        <p class="section-lead">Book a private hour or ask about a small group.</p>
+
         <div class="pricing-grid">
-          <div class="card price-card">
+          <div class="price-item">
             <h3>Private Lesson</h3>
-            <div class="price">$60 / hour</div>
-            <p>Video replay, hitting sticks, and passing targets for instant feedback.</p>
+            <div class="price">$60<span style="font-size:1rem; font-family:Outfit,sans-serif; font-weight:500; color:var(--muted);"> / hour</span></div>
+            <p>Video replay and training tools for instant feedback.</p>
           </div>
-          <div class="card price-card">
+          <div class="price-item">
             <h3>Small Group</h3>
             <div class="price">Varies</div>
             <p>Matched by skill, age, and position. Text to ask about open spots.</p>
@@ -426,53 +568,40 @@
 
     <section id="locations">
       <div class="container">
-        <h2 class="section-title">Where & When</h2>
-        <p class="section-lead">Pick the location closest to you, then text to book a slot.</p>
+        <p class="section-label">Schedule</p>
+        <h2 class="section-title">Where &amp; when</h2>
+        <p class="section-lead">Choose the location closest to you, then text to book.</p>
 
-        <div class="hours-summary">
-          <span class="hours-chip">Weekdays · 4:30–8 PM</span>
-          <span class="hours-chip">Sunday · 9 AM–12 PM</span>
+        <div class="hours-line">
+          <span><strong>Weekdays</strong> 4:30–8 PM</span>
+          <span><strong>Sunday</strong> 9 AM–12 PM</span>
         </div>
 
-        <div class="locations-grid">
-          <div class="location-card">
+        <div class="locations-list">
+          <div class="location-row">
             <h3>Fountain Valley</h3>
             <p class="address">17200 Oak St, Fountain Valley, CA 92708</p>
-            <div class="schedule-block">
-              <p class="time">4:30–8 PM</p>
-              <div class="day-tags">
-                <span class="day-tag">Mon</span>
-                <span class="day-tag">Wed</span>
-                <span class="day-tag">Thu</span>
-              </div>
-            </div>
-            <div class="schedule-block">
-              <p class="time">9 AM–12 PM</p>
-              <div class="day-tags">
-                <span class="day-tag">Sun</span>
-              </div>
+            <div class="days">
+              Mon · Wed · Thu
+              <span>4:30–8 PM</span>
+              Sun
+              <span>9 AM–12 PM</span>
             </div>
           </div>
-
-          <div class="location-card">
+          <div class="location-row">
             <h3>Long Beach</h3>
             <p class="address">5355 E Eliot St, Long Beach, CA 90803</p>
-            <div class="schedule-block">
-              <p class="time">4:30–8 PM</p>
-              <div class="day-tags">
-                <span class="day-tag">Tue</span>
-              </div>
+            <div class="days">
+              Tue
+              <span>4:30–8 PM</span>
             </div>
           </div>
-
-          <div class="location-card">
+          <div class="location-row">
             <h3>Buena Park</h3>
             <p class="address">5290 Cameron Dr, Buena Park, CA 90621</p>
-            <div class="schedule-block">
-              <p class="time">4:30–8 PM</p>
-              <div class="day-tags">
-                <span class="day-tag">Fri</span>
-              </div>
+            <div class="days">
+              Fri
+              <span>4:30–8 PM</span>
             </div>
           </div>
         </div>
@@ -481,29 +610,36 @@
 
     <section id="about">
       <div class="container">
-        <h2 class="section-title">About Downey</h2>
-        <div class="card about-grid">
-          <div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Coach Downey Huynh</h2>
             <p>I started volleyball late and had no roadmap — clubs, training, or how to play in college. I went from not playing freshman year to competing at Orange Coast College and the University of Jamestown, where I later coached as assistant and head coach.</p>
             <p>Now I help athletes and parents skip the confusion: strong fundamentals, real game skills, and the guidance I wish I had starting out.</p>
           </div>
-          <img src="https://drive.google.com/thumbnail?id=1VkJS3UHfawPGrSjX9qZgYw1RO7ALpG9g&sz=w1000" alt="Downey Huynh">
+          <div class="about-photo">
+            <img src="https://drive.google.com/thumbnail?id=1VkJS3UHfawPGrSjX9qZgYw1RO7ALpG9g&sz=w1000" alt="Downey Huynh">
+          </div>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
-        <div class="card contact-bar">
+        <div class="contact-block">
           <div>
-            <strong>Ready to train?</strong>
-            <p style="color: var(--muted); font-size: 0.95rem; margin-top: 4px;">Text to schedule. Complete the waiver before your first session.</p>
+            <p class="section-label">Book</p>
+            <h2 class="section-title">Ready to train?</h2>
+            <p class="section-lead" style="margin-bottom:0;">Text to schedule. Complete the waiver before your first session.</p>
           </div>
-          <div class="contact-links">
-            <a href="sms:17144748592">(714) 474-8592</a>
-            <a href="mailto:downeyhuynh1@gmail.com">downeyhuynh1@gmail.com</a>
-            <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer">Waiver form</a>
+          <div class="contact-actions">
+            <a href="sms:17144748592" class="btn">Text to Book</a>
+            <a href="https://forms.gle/GXmXSqXsuQLYiF9R6" target="_blank" rel="noopener noreferrer" class="btn" style="background:transparent; color:var(--ink); border:1px solid var(--line);">Sign Waiver</a>
           </div>
+        </div>
+        <div class="contact-meta">
+          <a href="sms:17144748592">(714) 474-8592</a>
+          <a href="mailto:downeyhuynh1@gmail.com">downeyhuynh1@gmail.com</a>
         </div>
       </div>
     </section>
