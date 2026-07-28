@@ -342,7 +342,43 @@
     }
 
     /* —— Schedule —— */
-    #locations { background: #fafafa; }
+    #locations {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    #locations::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      z-index: -2;
+      background: url("images/schedule-bg.jpg") center / cover no-repeat;
+      filter: blur(6px);
+      transform: scale(1.05);
+    }
+
+    #locations::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(12, 14, 18, 0.55);
+    }
+
+    #locations .section-label {
+      color: rgba(255,255,255,0.7);
+    }
+
+    #locations .section-title {
+      color: #fff;
+    }
+
+    #locations .section-lead {
+      color: rgba(255,255,255,0.78);
+    }
 
     .hours-bar {
       display: flex;
@@ -351,11 +387,11 @@
       gap: 12px 32px;
       margin-bottom: 40px;
       font-size: 0.95rem;
-      color: var(--muted);
+      color: rgba(255,255,255,0.75);
     }
 
     .hours-bar strong {
-      color: var(--ink);
+      color: #fff;
       font-weight: 700;
     }
 
@@ -370,16 +406,17 @@
       gap: 16px;
       align-items: baseline;
       padding: 24px 8px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(255,255,255,0.18);
     }
 
-    .location-row:first-child { border-top: 1px solid var(--line); }
+    .location-row:first-child { border-top: 1px solid rgba(255,255,255,0.18); }
 
     .location-row h3 {
       font-family: "Oswald", sans-serif;
       font-size: 1.15rem;
       font-weight: 600;
       letter-spacing: 0.02em;
+      color: #fff;
     }
 
     .location-row .city {
@@ -387,13 +424,13 @@
       font-family: "DM Sans", sans-serif;
       font-size: 0.82rem;
       font-weight: 500;
-      color: var(--muted);
+      color: rgba(255,255,255,0.65);
       margin-top: 4px;
       letter-spacing: 0;
     }
 
     .location-row .address {
-      color: var(--muted);
+      color: rgba(255,255,255,0.7);
       font-size: 0.92rem;
     }
 
@@ -401,12 +438,13 @@
       text-align: right;
       font-size: 0.92rem;
       font-weight: 600;
+      color: #fff;
     }
 
     .location-row .days span {
       display: block;
       font-weight: 400;
-      color: var(--muted);
+      color: rgba(255,255,255,0.65);
       font-size: 0.85rem;
       margin-top: 2px;
     }
